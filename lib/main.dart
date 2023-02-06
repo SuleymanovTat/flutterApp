@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'dart:developer' as developer;
 
 void main() {
   runApp(NewMyApp());
@@ -26,18 +30,59 @@ class _StatefulWidget extends State<NewMyApp> {
               children: [
                 TextButton(
                   onPressed: _onPressed,
+                  key: const Key("textView"),
                   child: Text(name,
                       style: TextStyle(
                           color: Colors.red.withOpacity(0.6),
                           background: Paint()..color = Colors.green)),
-                  key: const Key("textView"),
                 ),
-                Text("Hello world"),
-                Center(
+                const Text("Hello world"),
+                const Center(
                     child: Text(
                   "Center",
-                  style: TextStyle(backgroundColor: Colors.deepPurple),
-                ))
+                  style: TextStyle(
+                      backgroundColor: Colors.deepPurple,
+                      fontWeight: FontWeight.bold),
+                )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const <Widget>[
+                    Text('Row One'),
+                    Text('Row Two'),
+                    Text(
+                      'Row Three',
+                      style: TextStyle(color: Color(0x8b06d7d7)),
+                    ),
+                    Text('Row Four'),
+                  ],
+                ),
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Text('Column One'),
+                      Text('Column Two'),
+                      Text('Column Three'),
+                    ]),
+                TextButton(
+                  onPressed: () {
+                    debugPrint("debugPrint");
+                    developer.log('onPressed', name: 'my');
+                  },
+                  child: const Text(
+                    'Title Text', //title
+                    textAlign: TextAlign.end, //aligment
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    exit(0);
+                  },
+                  child: const Text(
+                    'Выход', //title
+                    textAlign: TextAlign.center, //aligment
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
               ],
             )));
   }
