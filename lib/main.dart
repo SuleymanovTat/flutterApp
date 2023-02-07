@@ -5,9 +5,11 @@ import 'dart:developer' as developer;
 import 'dart:math' as math;
 
 import 'package:flutter_application_name/widget/app.dart';
+import 'package:flutter_application_name/widget/profile.dart';
 
 void main() {
-  runApp(const App());
+  // runApp(const App());
+  runApp(const ProfileApp());
 }
 
 // class NewMyApp extends StatefulWidget {
