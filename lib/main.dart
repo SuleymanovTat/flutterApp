@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:developer' as developer;
+import 'dart:math' as math;
 
 void main() {
   runApp(NewMyApp());
@@ -23,9 +24,11 @@ class _StatefulWidget extends State<NewMyApp> {
   Widget build(BuildContext context) {
     // return ;
     return MaterialApp(
+        title: "Title  MaterialApp",
         home: Container(
             key: const Key("container"),
-            color: const Color(0xFF0659FF),
+            color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                .withOpacity(1.0),
             child: Column(
               children: [
                 TextButton(
