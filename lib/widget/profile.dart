@@ -14,7 +14,7 @@ class ProfileApp extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ItemList>? listDate = ["a", "b", "c", "b"]
         .map((String text) =>
-            ItemList(ItemData(Icons.favorite_border, "Класс \"" + text + "\"")))
+        ItemList(ItemData(Icons.favorite_border, "Класс \"$text\"")))
         .toList();
 
     return MaterialApp(
@@ -32,13 +32,17 @@ class ProfileApp extends StatelessWidget {
                 child: Placeholder(),
               ),
               const SizedBox(height: 30),
-              const Text(
-                "Том Круз",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                softWrap: false,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+              ElevatedButton(
+                  onPressed: () {
+                    debugPrint("ElevatedButton debugPrint");
+                  },
+                  child: const Text(
+                    "Том Круз",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  )),
               const SizedBox(height: 8),
               const Text(
                 "Актёр",
