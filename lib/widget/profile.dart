@@ -14,7 +14,7 @@ class ProfileApp extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ItemList>? listDate = ["a", "b", "c", "b"]
         .map((String text) =>
-        ItemList(ItemData(Icons.favorite_border, "Класс \"$text\"")))
+            ItemList(ItemData(Icons.favorite_border, "Класс \"$text\"")))
         .toList();
 
     return MaterialApp(
@@ -32,22 +32,9 @@ class ProfileApp extends StatelessWidget {
                 child: Placeholder(),
               ),
               const SizedBox(height: 30),
-              ElevatedButton(
-                  onPressed: () {
-                    debugPrint("ElevatedButton debugPrint");
-                  },
-                  child: const Text(
-                    "Том Круз",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: false,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  )),
+              buildElevatedButton(),
               const SizedBox(height: 8),
-              const Text(
-                "Актёр",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              buildCard(),
               const SizedBox(height: 30),
               Container(height: 30, color: Colors.blue),
               const ItemList(ItemData(Icons.favorite_border, "Избранное")),
@@ -64,6 +51,33 @@ class ProfileApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Card buildCard() {
+    return const Card(
+                color: Colors.amberAccent,
+                // ← And also this.
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                    "Актёр",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ));
+  }
+
+  ElevatedButton buildElevatedButton() {
+    return ElevatedButton(
+                onPressed: () {
+                  debugPrint("ElevatedButton debugPrint");
+                },
+                child: const Text(
+                  "Том Круз",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ));
   }
 
   Column buildRow(IconData iconData, String name) {
