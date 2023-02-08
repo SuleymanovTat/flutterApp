@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 
+class ItemData {
+  final IconData iconData;
+  final String name;
+
+  const ItemData(this.iconData, this.name);
+}
+
 class ProfileApp extends StatelessWidget {
   const ProfileApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<ItemList>? listDate = ["a", "b", "c", "b"]
+        .map((String text) =>
+            ItemList(ItemData(Icons.favorite_border, "Класс \"" + text + "\"")))
+        .toList();
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text("Профиль")),
@@ -34,17 +46,15 @@ class ProfileApp extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Container(height: 30, color: Colors.blue),
-              buildRow(Icons.favorite_border, "Избранное"),
-              buildRow(Icons.card_travel, "Корзина"),
-              buildRow(Icons.power_settings_new_outlined, "Настройки"),
-              buildRow(Icons.rule, "Правила"),
-              buildRow(Icons.account_balance_outlined, "О программе"),
+              const ItemList(ItemData(Icons.favorite_border, "Избранное")),
+              const ItemList(ItemData(Icons.card_travel, "Корзина")),
+              const ItemList(
+                  ItemData(Icons.power_settings_new_outlined, "Настройки")),
+              const ItemList(ItemData(Icons.rule, "Правила")),
+              const ItemList(
+                  ItemData(Icons.account_balance_outlined, "О программе")),
               Container(height: 30, color: Colors.blue),
-              buildRow(Icons.favorite_border, "Избранное"),
-              buildRow(Icons.card_travel, "Корзина"),
-              buildRow(Icons.power_settings_new_outlined, "Настройки"),
-              buildRow(Icons.rule, "Правила"),
-              buildRow(Icons.account_balance_outlined, "О программе"),
+              for (var item in listDate ?? [const Text("Empty")]) item
             ],
           ),
         ),
@@ -59,6 +69,32 @@ class ProfileApp extends StatelessWidget {
           Padding(padding: const EdgeInsets.all(8.0), child: Icon(iconData)),
           Expanded(
             child: Text(name),
+          ),
+          const Padding(
+              padding: EdgeInsets.all(8.0), child: Icon(Icons.arrow_right)),
+        ],
+      ),
+      const Divider(
+        color: Colors.blue,
+      )
+    ]);
+  }
+}
+
+class ItemList extends StatelessWidget {
+  final ItemData item;
+
+  const ItemList(this.item, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Row(
+        children: [
+          Padding(
+              padding: const EdgeInsets.all(8.0), child: Icon(item.iconData)),
+          Expanded(
+            child: Text(item.name),
           ),
           const Padding(
               padding: EdgeInsets.all(8.0), child: Icon(Icons.arrow_right)),
