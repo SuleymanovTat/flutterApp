@@ -23,30 +23,32 @@ class ProfileApp extends StatelessWidget {
         body: Container(
           width: double.infinity,
           color: Colors.white,
-          child: Column(
-            children: [
-              const SizedBox(height: 30),
-              const SizedBox(
-                width: 100,
-                height: 100,
-                child: Placeholder(),
-              ),
-              const SizedBox(height: 30),
-              buildElevatedButton(),
-              const SizedBox(height: 8),
-              buildCard(),
-              const SizedBox(height: 30),
-              Container(height: 30, color: Colors.blue),
-              const ItemList(ItemData(Icons.favorite_border, "Избранное")),
-              const ItemList(ItemData(Icons.card_travel, "Корзина")),
-              const ItemList(
-                  ItemData(Icons.power_settings_new_outlined, "Настройки")),
-              const ItemList(ItemData(Icons.rule, "Правила")),
-              const ItemList(
-                  ItemData(Icons.account_balance_outlined, "О программе")),
-              Container(height: 30, color: Colors.blue),
-              for (var item in listDate ?? [const Text("Empty")]) item
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 30),
+                const SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Placeholder(),
+                ),
+                const SizedBox(height: 30),
+                buildElevatedButton(),
+                const SizedBox(height: 8),
+                buildCard(),
+                const SizedBox(height: 30),
+                Container(height: 30, color: Colors.blue),
+                const ItemList(ItemData(Icons.favorite_border, "Избранное")),
+                const ItemList(ItemData(Icons.card_travel, "Корзина")),
+                const ItemList(
+                    ItemData(Icons.power_settings_new_outlined, "Настройки")),
+                const ItemList(ItemData(Icons.rule, "Правила")),
+                const ItemList(
+                    ItemData(Icons.account_balance_outlined, "О программе")),
+                Container(height: 30, color: Colors.blue),
+                for (var item in listDate ?? [const Text("Empty")]) item
+              ],
+            ),
           ),
         ),
       ),
