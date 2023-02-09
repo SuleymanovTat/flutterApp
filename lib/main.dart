@@ -5,11 +5,13 @@ import 'dart:developer' as developer;
 import 'dart:math' as math;
 
 import 'package:flutter_application_name/widget/app.dart';
+import 'package:flutter_application_name/widget/listview.dart';
 import 'package:flutter_application_name/widget/profile.dart';
 
 void main() {
   // runApp(const App());
-  runApp(const ProfileApp());
+  // runApp(const ProfileApp());
+  runApp(const CustomListView());
 }
 
 // class NewMyApp extends StatefulWidget {
